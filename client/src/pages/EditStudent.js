@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const BACKEND_URL = 'https://student-managament1.onrender.com';
+
 const EditStudent = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -25,7 +27,7 @@ const EditStudent = () => {
     
     const fetchStudent = async () => {
         try {
-            const response = await axios.get(`http://localhost:5001/students/${id}`);
+            const response = await axios.get(`${BACKEND_URL}/students/${id}`);
             setStudentData(response.data);
             setLoading(false);
         } catch (error) {
@@ -69,7 +71,7 @@ const EditStudent = () => {
         
         if (validate()) {
             try {
-                await axios.put(`http://localhost:5001/students/${id}`, studentData);
+                await axios.put(`${BACKEND_URL}/students/${id}`, studentData);
                 toast.success('Student updated successfully');
                 navigate('/students');
             } catch (error) {
