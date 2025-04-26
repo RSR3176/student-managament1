@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const BACKEND_URL = 'https://student-managament1.onrender.com';
+
 const AddStudent = () => {
     const navigate = useNavigate();
     
@@ -51,7 +53,7 @@ const AddStudent = () => {
         
         if (validate()) {
             try {
-                await axios.post('http://localhost:5001/students', studentData);
+                await axios.post(`${BACKEND_URL}/students`, studentData);
                 toast.success('Student added successfully');
                 navigate('/students');
             } catch (error) {
