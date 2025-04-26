@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const BACKEND_URL = 'https://student-managament1.onrender.com';
+
 const StudentList = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -13,20 +15,20 @@ const StudentList = () => {
 
     const fetchStudents = async () => {
         try {
-        const response = await axios.get('http://localhost:5001/students');
-        setStudents(response.data);
-        setLoading(false);
-    } catch (error) {
-        console.error('Error fetching students:', error);
-        toast.error('Failed to fetch students');
-        setLoading(false);
+            const response = await axios.get(`${BACKEND_URL}/students`);
+            setStudents(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching students:', error);
+            toast.error('Failed to fetch students');
+            setLoading(false);
         }
     };
 
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this student?')) {
             try {
-                await axios.delete(`http://localhost:5001/students/${id}`);
+                await axios.delete(`${BACKEND_URL}/students/${id}`);
                 setStudents(students.filter(student => student._id !== id));
                 toast.success('Student deleted successfully');
             } catch (error) {
