@@ -22,11 +22,7 @@ const EditStudent = () => {
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        fetchStudent();
-    }, [fetchStudent]);
-
-    
-    const fetchStudent = async () => {
+        const fetchStudent = async () => {
         try {
             const response = await axios.get(`${BACKEND_URL}/students/${id}`);
             setStudentData(response.data);
@@ -37,6 +33,10 @@ const EditStudent = () => {
             navigate('/students');
         }
     };
+    }, [fetchStudent]);
+
+    
+    
     
     const handleChange = (e) => {
         setStudentData({
