@@ -22,18 +22,20 @@ const EditStudent = () => {
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        const fetchStudent = async () => {
-        try {
-            const response = await axios.get(`${BACKEND_URL}/students/${id}`);
-            setStudentData(response.data);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching student:', error);
-            toast.error('Failed to fetch student details');
-            navigate('/students');
-        }
-    };
-    }, [fetchStudent]);
+  const fetchStudent = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/students/${id}`);
+      setStudentData(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching student:', error);
+      toast.error('Failed to fetch student details');
+      navigate('/students');
+    }
+  };
+
+  fetchStudent();
+}, [id, navigate]);
 
     
     
