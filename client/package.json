@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "https://rsr3176.github.io/student-managament1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,5 +40,4 @@
       "last 1 safari version"
     ]
   }
-  "homepage": "https://rsr3176.github.io/student-managament1"
 }
